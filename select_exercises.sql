@@ -8,6 +8,6 @@ SELECT genre AS 'The Genre of Nevermined' FROM albums WHERE name = 'Nevermind';
 
 SELECT name AS 'Albums released in the 1990s' FROM albums WHERE release_date BETWEEN 1990 AND 1999 ;
 
-SELECT name AS 'Albums w/ less than 20 mill. in sales' FROM albums WHERE sales <= 20;
+SELECT name AS 'Albums w/ less than 20 mill. in sales' FROM albums WHERE sales < 20;
 
-SELECT name AS 'Albums w/ the rock genre' FROM albums WHERE genre = 'rock';
+SELECT name AS 'Albums w/ the rock genre', genre FROM albums WHERE genre LIKE '%Rock%';
