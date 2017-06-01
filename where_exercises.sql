@@ -2,9 +2,10 @@ USE employees;
 
 SELECT *
 FROM employees
-WHERE first_name = 'Irena'
-      OR first_name = 'Vidya'
-      OR first_name = 'Maya'
+WHERE gender = 'M'
+      AND (first_name = 'Irena'
+           OR first_name = 'Vidya'
+           OR first_name = 'Maya')
 );
 
 SELECT *
