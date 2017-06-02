@@ -32,7 +32,9 @@ SELECT *
 FROM employees
 WHERE birth_date LIKE '%-12-25';
 
-SELECT *
+SELECT count(*),first_name, last_name
 FROM employees
 WHERE last_name LIKE '%q%'
-      AND last_name NOT LIKE '%qu%';
+      AND last_name NOT LIKE '%qu%'
+GROUP BY first_name, last_name
+ORDER BY count(*) DESC;
