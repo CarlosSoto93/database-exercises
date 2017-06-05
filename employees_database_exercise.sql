@@ -43,3 +43,6 @@ JOIN departments AS d ON dm.dept_no = d.dept_no
 WHERE s.to_date > now()
 AND dm.to_date > now()
 ORDER BY d.dept_name;
+
+# Bonus
+select * from salaries as s join employees as e on s.emp_no = e.emp_no;
