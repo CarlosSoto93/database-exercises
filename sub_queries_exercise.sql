@@ -6,7 +6,7 @@ SELECT
   CONCAT(first_name, ' ', last_name) AS Employee,
   hire_date
 FROM employees
-WHERE hire_date IN (
+WHERE hire_date = (
   SELECT hire_date
   FROM employees
   WHERE emp_no = 101010
@@ -31,18 +31,20 @@ WHERE gender = 'F'
 AND emp_no IN (
   SELECT emp_no
   FROM dept_manager
+  WHERE to_date > now()
 );
 
 # BONUS Find all the department names that have female managers.
 SELECT
-  dept_name AS 'Depatments with female managers'
-FROM departments
-WHERE dept_no IN (
-  SELECT dept_no
-  FROM dept_manager
-  WHERE emp_no IN (
-    SELECT emp_no
-    FROM employees
-    WHERE gender = 'F'
-  )
-);
+    dept_name AS 'Depatments with female managers'
+  FROM departments
+  WHERE dept_no IN (
+    SELECT dept_no
+    FROM dept_manager
+    WHERE to_date > now()
+          AND emp_no IN (
+      SELECT emp_no
+      FROM employees
+      WHERE gender = 'F'
+    )
+  );
