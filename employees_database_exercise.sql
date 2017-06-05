@@ -31,3 +31,15 @@ WHERE t.to_date > now()
   AND d.dept_name = 'Customer Service'
 GROUP BY t.title;
 
+# Find the current salary of all current managers.
+SELECT
+  dept_name AS 'Department Name',
+  CONCAT(first_name, ' ', last_name) AS 'Name',
+  salary AS Salary
+FROM salaries AS s
+JOIN employees AS e ON s.emp_no = e.emp_no
+JOIN dept_manager AS dm ON e.emp_no = dm.emp_no
+JOIN departments AS d ON dm.dept_no = d.dept_no
+WHERE s.to_date > now()
+AND dm.to_date > now()
+ORDER BY d.dept_name;
